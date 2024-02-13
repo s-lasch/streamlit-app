@@ -33,20 +33,23 @@ st.sidebar.markdown('''
 # Row A
 with open("pages/about.md", "r") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
-# col1, col2, col3 = st.columns(3)
-# col1.metric("Temperature", "70 °F", "1.2 °F")
-# col2.metric("Wind", "9 mph", "-8%")
-# col3.metric("Humidity", "86%", "4%")
 
 # Row B
 c1, c2 = st.columns((5, 5))
 with c1:
-    st.markdown('### Language Distribution')
+    st.markdown("""
+    ### Language Distribution
+    This chart displays the langauges that I have completed typing tests in.
+    """)
     lang_pie = plots.lang_pie(typing, height=400, width=400)
     st.plotly_chart(lang_pie, use_container_width=True)
 
 with c2:
-    st.markdown('### Typing Test Modes')
+    st.markdown("""
+    ### Typing Test Modes
+    The `time` mode represents a timed test, in seconds. The `words` mode is a test that consists of typing a sequence
+    of words, either 10, 25, 50, or 100. The `quote` mode involves typing a specific quote. 
+    """)
     pie = plots.pie(typing, lang=lang, height=400, width=400)
     st.plotly_chart(pie, use_container_width=True)
 
