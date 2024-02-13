@@ -4,7 +4,7 @@ import plots
 
 typing = pd.read_csv('data/results.csv', delimiter="|")
 
-st.set_page_config(layout='wide', initial_sidebar_state='expanded', title='Typing Test Analysis')
+st.set_page_config(layout='wide', initial_sidebar_state='expanded', page_title='Typing Test Analysis')
 
 with open('style.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
