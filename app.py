@@ -4,7 +4,7 @@ import plots
 
 typing = pd.read_csv('data/results.csv', delimiter="|")
 
-st.title("Typing Test Analysis")
+# st.title("Typing Test Analysis")
 
 st.set_page_config(layout='wide', initial_sidebar_state='expanded')
 
