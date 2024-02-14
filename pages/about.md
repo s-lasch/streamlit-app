@@ -1,4 +1,4 @@
-## Typing Test Analysis
+# Typing Test Analysis
 ### About
 [MonkeyType](https://monkeytype.com) is a customizable typing test website that allows the user to download 
 their typing data. To me, this presents itself as a perfect candidate for a data analysis project! Over the course 
