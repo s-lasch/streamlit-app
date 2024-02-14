@@ -54,7 +54,13 @@ boxplot = {
     },
     "series": [
         {
-            "color": plots.color_discrete_sequence,
+            "color": plots.color_discrete_sequence[0],
+            "name": 'boxplot',
+            "type": 'boxplot',
+            "datasetIndex": 1
+        },
+        {
+            "color": plots.color_discrete_sequence[1],
             "name": 'boxplot',
             "type": 'boxplot',
             "datasetIndex": 1
