@@ -1,6 +1,9 @@
 import streamlit as st
+import streamlit_echarts as se
 import pandas as pd
 import plots
+from data.data import lang_pie
+
 
 typing = pd.read_csv('data/results.csv', delimiter="|")
 
@@ -34,22 +37,15 @@ st.sidebar.markdown('''
 with open("pages/about.md", "r") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
 
+
 # Row B
 c1, c2 = st.columns((5, 5))
 with c1:
-    st.markdown("""
-    ### Language Distribution
-    This chart displays the langauges that I have completed typing tests in.
-    """)
-    lang_pie = plots.lang_pie(typing, height=400, width=400)
-    st.plotly_chart(lang_pie, use_container_width=True)
+    st.markdown("""### Language Distribution""")
+    se.st_echarts(lang_pie, renderer='svg', height="400px")
 
 with c2:
-    st.markdown("""
-    ### Typing Test Modes
-    The `time` mode represents a timed test, in seconds. The `words` mode is a test that consists of typing a sequence
-    of words, either 10, 25, 50, or 100. The `quote` mode involves typing a specific quote. 
-    """)
+    st.markdown("""### Typing Test Modes""")
     pie = plots.pie(typing, lang=lang, height=400, width=400)
     st.plotly_chart(pie, use_container_width=True)
 
