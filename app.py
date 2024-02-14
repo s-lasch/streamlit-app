@@ -59,6 +59,6 @@ with c2:
 
 # Row C
 st.markdown('### Box Plot')
-se.st_echarts(get_mode_data(typing, lang)[1], renderer='svg')
+se.st_echarts(get_mode_data(typing, lang)[1], renderer='svg', height=box_height)
 # box = plots.box(typing, col=choose_column, lang=lang)
 # st.plotly_chart(box, use_container_width=True)
