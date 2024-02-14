@@ -12,6 +12,7 @@ pie = {
     },
     "series": [
         {
+            "color": plots.color_discrete_sequence,
             "name": 'Tests Taken',
             "type": 'pie',
             "radius": ['40%', '70%'],
@@ -43,6 +44,7 @@ def get_lang_data(df):
              .capitalize()} for language, count in zip(df_pie['language'], df_pie['count'])]
 
     pie['series'][0]['data'] = data
+    pie['series'][0]['color'] = plots.color_discrete_sequence_r
     return pie
 
 
@@ -60,4 +62,4 @@ def get_mode_data(df, lang='All'):
 if __name__ == "__main__":
     dff = pd.read_csv('results.csv', delimiter='|')
     lang_pie = get_mode_data(dff, 'All')
-    print(lang_pie)
+    print(plots.color_discrete_sequence)
