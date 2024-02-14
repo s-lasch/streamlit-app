@@ -54,7 +54,7 @@ with c1:
 
 with c2:
     st.markdown("""### <center>Typing Test Modes</center>""", unsafe_allow_html=True)
-    se.st_echarts(get_mode_data(typing, lang)[0], renderer='svg', height=plot_height)
+    se.st_echarts(get_mode_data(typing, lang=lang)[0], renderer='svg', height=plot_height)
 
 st.markdown('<br/>', unsafe_allow_html=True)
 
