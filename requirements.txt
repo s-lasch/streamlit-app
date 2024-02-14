@@ -1,3 +1,4 @@
+streamlit
+streamlit_echarts
 pandas
 plotly
-streamlit_echarts
