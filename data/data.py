@@ -54,17 +54,6 @@ boxplot = {
     },
     "series": [
         {
-            "color": plots.color_discrete_sequence,
-            "name": 'boxplot',
-            "type": 'boxplot',
-            "datasetIndex": 1
-        },
-        # {
-        #     "name": 'outlier',
-        #     "type": 'scatter',
-        #     "datasetIndex": 2
-        # },
-        {
             "color": plots.color_discrete_sequence[0],
             "name": 'time',
             "type": 'boxplot',
