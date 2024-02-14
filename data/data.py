@@ -56,6 +56,7 @@ def get_mode_data(df, lang='All'):
     data = [{"value": count, "name": mode.capitalize()} for mode, count in zip(df_pie['mode'], df_pie['count'])]
 
     pie['series'][0]['data'] = data
+    pie['series'][0]['color'] = plots.color_discrete_sequence
     return pie
 
 
