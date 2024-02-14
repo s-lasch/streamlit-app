@@ -20,6 +20,8 @@ lang = st.sidebar.selectbox('Filter by langauge',
                             options=['All'] + [lang for lang in typing['language'].unique()],
                             format_func=lambda x: (x.replace('_', " ").capitalize() if not x.endswith('1k') else x.split("_")[0].capitalize()))
 
+st.sidebar.html('<br />')
+
 st.sidebar.subheader('Column')
 choose_column = st.sidebar.selectbox('Choose column',
                                      options=['wpm', 'acc', 'consistency', 'rawWpm'],
@@ -27,7 +29,7 @@ choose_column = st.sidebar.selectbox('Choose column',
                                      else 'accuracy' if x == 'acc'
                                      else 'raw words per minute' if x == 'rawWpm'
                                      else x)
-
+st.sidebar.html('<br />')
 st.sidebar.subheader('Pie Graph Height')
 plot_height = st.sidebar.slider(min_value=200, max_value=600, step=5, value=400, label="Height for the pie charts")
 
