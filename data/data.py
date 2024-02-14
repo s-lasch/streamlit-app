@@ -57,31 +57,31 @@ boxplot = {
             "color": plots.color_discrete_sequence[0],
             "name": 'time',
             "type": 'boxplot',
-            "datasetIndex": 5
+            "datasetIndex": 0
         },
         {
             "color": plots.color_discrete_sequence[1],
             "name": 'words',
             "type": 'boxplot',
-            "datasetIndex": 6
+            "datasetIndex": 1
         },
         {
             "color": plots.color_discrete_sequence[2],
             "name": 'quote',
             "type": 'boxplot',
-            "datasetIndex": 7
+            "datasetIndex": 2
         },
         {
             "color": plots.color_discrete_sequence[3],
             "name": 'custom',
             "type": 'boxplot',
-            "datasetIndex": 8
+            "datasetIndex": 3
         },
         {
             "color": plots.color_discrete_sequence[4],
             "name": 'zen',
             "type": 'boxplot',
-            "datasetIndex": 9
+            "datasetIndex": 4
         },
     ]
 }
@@ -159,7 +159,7 @@ def get_mode_data(df, col=None, lang='All'):
         boxplot['dataset'][0] = data
 
         for i, _ in enumerate(mode_data):
-            boxplot['dataset'].insert(2, {"fromDatasetIndex": i, "transform": {"type": 'boxplot'}})
+            boxplot['dataset'].insert(2, {"transform": {"type": 'boxplot'}})
 
     return pie, boxplot
 
