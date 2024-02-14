@@ -129,7 +129,8 @@ def get_mode_data(df, col=None, lang='All'):
     if col:
         # get boxplot data
         df_box = plots.filter_language(df, lang)
-        df_box = df_box[df_box['mode'] == col]
+        df_box = df_box[df_box[col] == col].values()
+        print(df_box)
 
     return pie, boxplot
 

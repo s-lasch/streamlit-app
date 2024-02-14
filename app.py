@@ -60,4 +60,4 @@ st.markdown('<br/>', unsafe_allow_html=True)
 
 # Row C
 st.markdown('### <center>Box Plot</center>', unsafe_allow_html=True)
-se.st_echarts(get_mode_data(typing, lang)[1], renderer='svg', height=box_height)
+se.st_echarts(get_mode_data(typing, choose_column, lang)[1], renderer='svg', height=box_height)
