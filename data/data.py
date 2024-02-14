@@ -129,7 +129,7 @@ def get_mode_data(df, col=None, lang='All'):
     if col:
         # get boxplot data
         df_box = plots.filter_language(df, lang)
-        data = [{'thing':df_box[col][df_box['mode'] == 'time'].to_list()},
+        data = [df_box[col][df_box['mode'] == 'time'].to_list(),
                 df_box[col][df_box['mode'] == 'words'].to_list(),
                 df_box[col][df_box['mode'] == 'quote'].to_list(),
                 df_box[col][df_box['mode'] == 'custom'].to_list(),
