@@ -39,7 +39,7 @@ def get_lang_data(df):
     df_pie = df.groupby('language')['language'].count().to_frame().rename(
         columns={'language': 'count'}).reset_index().sort_values('count', ascending=False)
     data = [{"value": count,
-             "name": language.replace("_", " ").capitalize() if not language.endswith('1k') else language.split('_')[0]
+             "name": language.replace("_", " \n").capitalize() if not language.endswith('1k') else language.split('_')[0]
              .capitalize()} for language, count in zip(df_pie['language'], df_pie['count'])]
 
     pie['series'][0]['data'] = data
