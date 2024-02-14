@@ -33,6 +33,10 @@ st.sidebar.markdown('<br/>', unsafe_allow_html=True)
 st.sidebar.subheader('Pie Graph Height')
 plot_height = st.sidebar.slider(min_value=200, max_value=600, step=5, value=400, label="Height for the pie charts")
 
+st.sidebar.markdown('<br/>', unsafe_allow_html=True)
+st.sidebar.subheader('Box Plot Height')
+box_height = st.sidebar.slider(min_value=400, max_value=600, step=5, value=400, label="Height for the box plot")
+
 st.sidebar.markdown('''
 ---
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
