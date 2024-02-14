@@ -59,11 +59,11 @@ boxplot = {
             "type": 'boxplot',
             "datasetIndex": 1
         },
-        {
-            "name": 'outlier',
-            "type": 'scatter',
-            "datasetIndex": 2
-        }
+        # {
+        #     "name": 'outlier',
+        #     "type": 'scatter',
+        #     "datasetIndex": 2
+        # }
     ]
 }
 
