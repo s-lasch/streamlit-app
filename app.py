@@ -28,6 +28,9 @@ choose_column = st.sidebar.selectbox('Choose column',
                                      else 'raw words per minute' if x == 'rawWpm'
                                      else x)
 
+st.sidebar.subheader('Pie Graph Height')
+plot_height = st.sidebar.slider(min_value=200, max_value=600, step=5, value=400)
+
 st.sidebar.markdown('''
 ---
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
@@ -42,11 +45,11 @@ with open("pages/about.md", "r") as f:
 c1, c2 = st.columns((5, 5))
 with c1:
     st.markdown("""### <center>Language Distribution</center>""", unsafe_allow_html=True)
-    se.st_echarts(get_lang_data(typing), renderer='svg', height="400px")
+    se.st_echarts(get_lang_data(typing), renderer='svg', height=plot_height)
 
 with c2:
     st.markdown("""### <center>Typing Test Modes</center>""", unsafe_allow_html=True)
-    se.st_echarts(get_mode_data(typing, lang)[0], renderer='svg', height="400px")
+    se.st_echarts(get_mode_data(typing, lang)[0], renderer='svg', height=plot_height)
 
 # Row C
 st.markdown('### Box Plot')
