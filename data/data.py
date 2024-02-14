@@ -15,7 +15,7 @@ boxplot = {
         {
             "transform": {
                 "type": 'boxplot',
-                "config": {"itemNameFormatter": 'mode {value}'}  # this will be changed
+                "config": {"itemNameFormatter": 'mode {mode}'}  # this will be changed
             }
         },
         {
@@ -46,7 +46,7 @@ boxplot = {
         }
     },
     "yAxis": {
-        "type": 'value',
+        "type": 'mode',
         "name": '',  # this will be changed
         "splitArea": {
             "show": True
