@@ -54,10 +54,10 @@ with c1:
 
 with c2:
     st.markdown("""### <center>Typing Test Modes</center>""", unsafe_allow_html=True)
-    se.st_echarts(get_mode_data(typing, lang=lang)[0], renderer='svg', height=plot_height)
+    se.st_echarts(get_mode_data(typing, lang=lang), renderer='svg', height=plot_height)
 
 st.markdown('<br/>', unsafe_allow_html=True)
 
 # Row C
 st.markdown('### <center>Box Plot</center>', unsafe_allow_html=True)
-se.st_echarts(get_mode_data(typing, choose_column, lang)[1], renderer='svg', height=box_height)
+se.st_echarts(get_mode_data(typing, choose_column, lang), renderer='svg', height=box_height)

@@ -146,6 +146,7 @@ def get_mode_data(df, col=None, lang='All'):
 
         pie['series'][0]['data'] = data
         pie['series'][0]['color'] = plots.color_discrete_sequence
+        return pie
 
     else:
         # get boxplot data
@@ -162,9 +163,7 @@ def get_mode_data(df, col=None, lang='All'):
 
         for i, _ in enumerate(mode_data):
             boxplot['dataset'].insert(2, {"transform": {"type": 'boxplot'}})
-
-    return pie, boxplot
-
+        return boxplot
 
 if __name__ == "__main__":
     dff = pd.read_csv('results.csv', delimiter='|')
