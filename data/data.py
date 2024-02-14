@@ -136,7 +136,7 @@ def get_mode_data(df, col=None, lang='All'):
                             df_box[col][df_box['mode'] == 'custom'].to_list(),
                             df_box[col][df_box['mode'] == 'zen'].to_list()]]
 
-        boxplot['dataset'][0] = data
+        boxplot['dataset'][0]['source'] = data
         # boxplot['dataset'][1]['transform']['config']['itemNameFormatter'] = 'expr {value}'
 
     return pie, boxplot
