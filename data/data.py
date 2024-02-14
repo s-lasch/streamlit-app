@@ -47,7 +47,7 @@ boxplot = {
     },
     "yAxis": {
         "type": 'value',
-        "name": 'km/s minus 299,000',
+        "name": '',  # this will be changed
         "splitArea": {
             "show": True
         }
