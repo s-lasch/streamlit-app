@@ -9,7 +9,7 @@ In this project, I have created data visualizations of these data points. I have
 techniques, with using plots that represent the statistics of the data, such as a box and whisker plot, as well as 
 pie charts to represent distributions of features.
 
-Some helpful notes:  
+**Some helpful notes:**  
 - The `time` mode represents a timed test, in seconds.  
 - The `words` mode is a test that consists of typing a sequence of words, either 10, 25, 50, or 100.  
 - The `quote` mode involves typing a specific quote. 
