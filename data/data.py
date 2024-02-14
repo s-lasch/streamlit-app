@@ -15,7 +15,7 @@ boxplot = {
         {
             "transform": {
                 "type": 'boxplot',
-                "config": {"itemNameFormatter": ''}  # this will be changed
+                "config": {"itemNameFormatter": 'mode {value}'}  # this will be changed
             }
         },
         {
@@ -135,7 +135,7 @@ def get_mode_data(df, col=None, lang='All'):
                 df_box[col][df_box['mode'] == 'custom'].to_list(),
                 df_box[col][df_box['mode'] == 'zen'].to_list()]
         boxplot['dataset'][0]['source'] = data
-        boxplot['dataset'][1]['transform']['config']['itemNameFormatter'] = 'expr {mode}'
+        # boxplot['dataset'][1]['transform']['config']['itemNameFormatter'] = 'expr {value}'
 
     return pie, boxplot
 
