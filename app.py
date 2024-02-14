@@ -29,7 +29,7 @@ choose_column = st.sidebar.selectbox('Choose column',
                                      else x)
 
 st.sidebar.subheader('Pie Graph Height')
-plot_height = st.sidebar.slider(min_value=200, max_value=600, step=5, value=400)
+plot_height = st.sidebar.slider(min_value=200, max_value=600, step=5, value=400, label="sus")
 
 st.sidebar.markdown('''
 ---
