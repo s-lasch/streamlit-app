@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit_echarts as se
 import pandas as pd
-import plots
+
 from data.data import get_lang_data, get_mode_data
 
 
