@@ -129,13 +129,17 @@ def get_mode_data(df, col=None, lang='All'):
     if col:
         # get boxplot data
         df_box = plots.filter_language(df, lang)
-        df_box = df_box[df_box[col] == col].values()
-        print(df_box)
+        data = [df_box[col][df_box['mode'] == 'time'].to_list(),
+                df_box[col][df_box['mode'] == 'words'].to_list(),
+                df_box[col][df_box['mode'] == 'quote'].to_list(),
+                df_box[col][df_box['mode'] == 'custom'].to_list(),
+                df_box[col][df_box['mode'] == 'zen'].to_list()]
+        boxplot['dataset'][0]['source'] = data
 
     return pie, boxplot
 
 
 if __name__ == "__main__":
     dff = pd.read_csv('results.csv', delimiter='|')
-    lang_pie = get_mode_data(dff, 'All')
+    lang_pie = get_mode_data(dff, col='wpm', lang='All')
     print(plots.color_discrete_sequence)
