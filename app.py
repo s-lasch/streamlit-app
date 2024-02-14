@@ -18,7 +18,7 @@ st.sidebar.header('Dashboard `version 2`')
 st.sidebar.subheader('Language')
 lang = st.sidebar.selectbox('Filter by langauge',
                             options=['All'] + [lang for lang in typing['language'].unique()],
-                            format_func=lambda x: (x.replace('_', " ").capitalize() if not x.endswith('1k') else x.split("_")[0]))
+                            format_func=lambda x: (x.replace('_', " ").capitalize() if not x.endswith('1k') else x.split("_")[0].capitalize()))
 
 st.sidebar.subheader('Column')
 choose_column = st.sidebar.selectbox('Choose column',
