@@ -82,7 +82,7 @@ boxplot = {
             "name": 'zen',
             "type": 'boxplot',
             "datasetIndex": 4
-        },
+        }
     ]
 }
 
@@ -135,17 +135,19 @@ def get_lang_data(df):
 
 
 def get_mode_data(df, col=None, lang='All'):
-    # get pie chart data
-    df_pie = plots.filter_language(df, lang)
-    df_pie = df_pie.groupby('mode')['mode'].count().to_frame().rename(
-        columns={'mode': 'count'}).reset_index().sort_values('count', ascending=False)
 
-    data = [{"value": count, "name": mode.capitalize()} for mode, count in zip(df_pie['mode'], df_pie['count'])]
+    if col is None:
+        # get pie chart data
+        df_pie = plots.filter_language(df, lang)
+        df_pie = df_pie.groupby('mode')['mode'].count().to_frame().rename(
+            columns={'mode': 'count'}).reset_index().sort_values('count', ascending=False)
 
-    pie['series'][0]['data'] = data
-    pie['series'][0]['color'] = plots.color_discrete_sequence
+        data = [{"value": count, "name": mode.capitalize()} for mode, count in zip(df_pie['mode'], df_pie['count'])]
 
-    if col:
+        pie['series'][0]['data'] = data
+        pie['series'][0]['color'] = plots.color_discrete_sequence
+
+    else:
         # get boxplot data
         df_box = plots.filter_language(df, lang)
 
