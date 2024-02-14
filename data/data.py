@@ -59,11 +59,41 @@ boxplot = {
             "type": 'boxplot',
             "datasetIndex": 1
         },
+        # {
+        #     "name": 'outlier',
+        #     "type": 'scatter',
+        #     "datasetIndex": 2
+        # },
         {
-            "name": 'outlier',
-            "type": 'scatter',
+            "color": plots.color_discrete_sequence[0],
+            "name": 'time',
+            "type": 'boxplot',
+            "datasetIndex": 0
+        },
+        {
+            "color": plots.color_discrete_sequence[1],
+            "name": 'words',
+            "type": 'boxplot',
+            "datasetIndex": 1
+        },
+        {
+            "color": plots.color_discrete_sequence[2],
+            "name": 'quote',
+            "type": 'boxplot',
             "datasetIndex": 2
-        }
+        },
+        {
+            "color": plots.color_discrete_sequence[3],
+            "name": 'custom',
+            "type": 'boxplot',
+            "datasetIndex": 3
+        },
+        {
+            "color": plots.color_discrete_sequence[4],
+            "name": 'zen',
+            "type": 'boxplot',
+            "datasetIndex": 4
+        },
     ]
 }
 
