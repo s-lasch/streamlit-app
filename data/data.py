@@ -130,11 +130,12 @@ def get_mode_data(df, col=None, lang='All'):
         # get boxplot data
         df_box = plots.filter_language(df, lang)
 
-        data = [i for i in [df_box[col][df_box['mode'] == 'time'].to_list(),
-                            df_box[col][df_box['mode'] == 'words'].to_list(),
-                            df_box[col][df_box['mode'] == 'quote'].to_list(),
-                            df_box[col][df_box['mode'] == 'custom'].to_list(),
-                            df_box[col][df_box['mode'] == 'zen'].to_list()]]
+        data = [{j: i} for i, j in zip([df_box[col][df_box['mode'] == 'time'].to_list(),
+                                        df_box[col][df_box['mode'] == 'words'].to_list(),
+                                        df_box[col][df_box['mode'] == 'quote'].to_list(),
+                                        df_box[col][df_box['mode'] == 'custom'].to_list(),
+                                        df_box[col][df_box['mode'] == 'zen'].to_list()],
+                                       ['time', 'words', 'quote', 'custom', 'zen'])]
 
         boxplot['dataset'][0]['source'] = data
         # boxplot['dataset'][1]['transform']['config']['itemNameFormatter'] = 'expr {value}'
