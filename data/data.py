@@ -7,7 +7,7 @@ pie = {
     },
     "legend": {
         "orient": "vertical",
-        # "right": 20,
+        "right": 20,
         "bottom": "center"
     },
     "series": [
