@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit_echarts as se
 import pandas as pd
 import plots
-from data.data import lang_pie
+from data.data import get_lang_data, get_mode_data
 
 
 typing = pd.read_csv('data/results.csv', delimiter="|")
@@ -42,12 +42,11 @@ with open("pages/about.md", "r") as f:
 c1, c2 = st.columns((5, 5))
 with c1:
     st.markdown("""### Language Distribution""")
-    se.st_echarts(lang_pie, renderer='svg', height="400px")
+    se.st_echarts(get_lang_data(typing), renderer='svg', height="400px")
 
 with c2:
     st.markdown("""### Typing Test Modes""")
-    pie = plots.pie(typing, lang=lang, height=400, width=400)
-    st.plotly_chart(pie, use_container_width=True)
+    se.st_echarts(get_mode_data(typing), renderer='svg', height="400px")
 
 # Row C
 st.markdown('### Box Plot')
