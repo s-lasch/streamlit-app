@@ -41,11 +41,11 @@ with open("pages/about.md", "r") as f:
 # Row B
 c1, c2 = st.columns((5, 5))
 with c1:
-    st.markdown("""### Language Distribution""")
+    st.markdown("""### <center>Language Distribution</center>""", unsafe_allow_html=True)
     se.st_echarts(get_lang_data(typing), renderer='svg', height="400px")
 
 with c2:
-    st.markdown("""### Typing Test Modes""")
+    st.markdown("""### <center>Typing Test Modes</center>""", unsafe_allow_html=True)
     se.st_echarts(get_mode_data(typing), renderer='svg', height="400px")
 
 # Row C
