@@ -55,7 +55,7 @@ def get_mode_data(df, lang='All'):
 
     data = [{"value": count, "name": mode.capitalize()} for mode, count in zip(df_pie['mode'], df_pie['count'])]
 
-    mode_data = pie['series'][0]['data'] = data
+    pie['series'][0]['data'] = data
     return pie
 
 
