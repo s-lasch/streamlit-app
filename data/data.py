@@ -18,10 +18,10 @@ boxplot = {
                 "config": {"itemNameFormatter": 'mode {value}'}  # this will be changed
             }
         },
-        # {
-        #     "fromDatasetIndex": 1,
-        #     "fromTransformResult": 1
-        # }
+        {
+            "fromDatasetIndex": 1,
+            "fromTransformResult": 1
+        }
     ],
     "tooltip": {
         "trigger": 'item',
@@ -54,34 +54,15 @@ boxplot = {
     },
     "series": [
         {
-            "color": plots.color_discrete_sequence[0],
-            "name": 'time',
-            "type": 'boxplot',
-            "datasetIndex": 0
-        },
-        {
-            "color": plots.color_discrete_sequence[1],
-            "name": 'words',
+            "color": plots.color_discrete_sequence,
+            "name": 'boxplot',
             "type": 'boxplot',
             "datasetIndex": 1
         },
         {
-            "color": plots.color_discrete_sequence[2],
-            "name": 'quote',
-            "type": 'boxplot',
+            "name": 'outlier',
+            "type": 'scatter',
             "datasetIndex": 2
-        },
-        {
-            "color": plots.color_discrete_sequence[3],
-            "name": 'custom',
-            "type": 'boxplot',
-            "datasetIndex": 3
-        },
-        {
-            "color": plots.color_discrete_sequence[4],
-            "name": 'zen',
-            "type": 'boxplot',
-            "datasetIndex": 4
         }
     ]
 }
@@ -135,37 +116,33 @@ def get_lang_data(df):
 
 
 def get_mode_data(df, col=None, lang='All'):
+    # get pie chart data
+    df_pie = plots.filter_language(df, lang)
+    df_pie = df_pie.groupby('mode')['mode'].count().to_frame().rename(
+        columns={'mode': 'count'}).reset_index().sort_values('count', ascending=False)
 
-    if col is None:
-        # get pie chart data
-        df_pie = plots.filter_language(df, lang)
-        df_pie = df_pie.groupby('mode')['mode'].count().to_frame().rename(
-            columns={'mode': 'count'}).reset_index().sort_values('count', ascending=False)
+    data = [{"value": count, "name": mode.capitalize()} for mode, count in zip(df_pie['mode'], df_pie['count'])]
 
-        data = [{"value": count, "name": mode.capitalize()} for mode, count in zip(df_pie['mode'], df_pie['count'])]
+    pie['series'][0]['data'] = data
+    pie['series'][0]['color'] = plots.color_discrete_sequence
 
-        pie['series'][0]['data'] = data
-        pie['series'][0]['color'] = plots.color_discrete_sequence
-        return pie
-
-    else:
+    if col:
         # get boxplot data
         df_box = plots.filter_language(df, lang)
 
-        mode_data = [df_box[col][df_box['mode'] == 'time'].to_list(),
-                     df_box[col][df_box['mode'] == 'words'].to_list(),
-                     df_box[col][df_box['mode'] == 'quote'].to_list(),
-                     df_box[col][df_box['mode'] == 'custom'].to_list(),
-                     df_box[col][df_box['mode'] == 'zen'].to_list()]
+        data = [{'source': i} for i in [df_box[col][df_box['mode'] == 'time'].to_list(),
+                                        df_box[col][df_box['mode'] == 'words'].to_list(),
+                                        df_box[col][df_box['mode'] == 'quote'].to_list(),
+                                        df_box[col][df_box['mode'] == 'custom'].to_list(),
+                                        df_box[col][df_box['mode'] == 'zen'].to_list()]]
 
-        data = [{'source': i} for i in mode_data]
         boxplot['dataset'][0] = data
+        # boxplot['dataset'][1]['transform']['config']['itemNameFormatter'] = 'expr {value}'
 
-        for i, _ in enumerate(mode_data):
-            boxplot['dataset'].insert(2, {"transform": {"type": 'boxplot'}})
-        return boxplot
+    return pie, boxplot
+
 
 if __name__ == "__main__":
     dff = pd.read_csv('results.csv', delimiter='|')
     lang_pie = get_mode_data(dff, col='wpm', lang='All')
-    print(lang_pie[1])
+    print(plots.color_discrete_sequence)
