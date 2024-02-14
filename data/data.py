@@ -4,7 +4,7 @@ import plots
 boxplot = {
     "title": [
         {
-            "text": 'Michelson-Morley Experiment',
+            "text": '',
             "left": 'center'
         },
         {
