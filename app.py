@@ -57,8 +57,8 @@ with c2:
     st.markdown("""### <center>Typing Test Modes</center>""", unsafe_allow_html=True)
     se.st_echarts(get_mode_data(typing, lang)[0], renderer='svg', height=plot_height)
 
+st.markdown('<br/>', unsafe_allow_html=True)
+
 # Row C
 st.markdown('### Box Plot')
 se.st_echarts(get_mode_data(typing, lang)[1], renderer='svg', height=box_height)
-# box = plots.box(typing, col=choose_column, lang=lang)
-# st.plotly_chart(box, use_container_width=True)
