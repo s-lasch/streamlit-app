@@ -18,10 +18,10 @@ boxplot = {
                 "config": {"itemNameFormatter": 'mode {value}'}  # this will be changed
             }
         },
-        {
-            "fromDatasetIndex": 1,
-            "fromTransformResult": 1
-        }
+        # {
+        #     "fromDatasetIndex": 1,
+        #     "fromTransformResult": 1
+        # }
     ],
     "tooltip": {
         "trigger": 'item',
@@ -130,14 +130,17 @@ def get_mode_data(df, col=None, lang='All'):
         # get boxplot data
         df_box = plots.filter_language(df, lang)
 
-        data = [{'source': i} for i in [df_box[col][df_box['mode'] == 'time'].to_list(),
-                                        df_box[col][df_box['mode'] == 'words'].to_list(),
-                                        df_box[col][df_box['mode'] == 'quote'].to_list(),
-                                        df_box[col][df_box['mode'] == 'custom'].to_list(),
-                                        df_box[col][df_box['mode'] == 'zen'].to_list()]]
+        mode_data = [df_box[col][df_box['mode'] == 'time'].to_list(),
+                     df_box[col][df_box['mode'] == 'words'].to_list(),
+                     df_box[col][df_box['mode'] == 'quote'].to_list(),
+                     df_box[col][df_box['mode'] == 'custom'].to_list(),
+                     df_box[col][df_box['mode'] == 'zen'].to_list()]
 
+        data = [{'source': i} for i in mode_data]
         boxplot['dataset'][0] = data
-        # boxplot['dataset'][1]['transform']['config']['itemNameFormatter'] = 'expr {value}'
+
+        for i, _ in enumerate(mode_data):
+            boxplot['dataset'].insert(2, {"fromDatasetIndex": i, "transform": {"type": 'boxplot'}})
 
     return pie, boxplot
 
@@ -145,4 +148,4 @@ def get_mode_data(df, col=None, lang='All'):
 if __name__ == "__main__":
     dff = pd.read_csv('results.csv', delimiter='|')
     lang_pie = get_mode_data(dff, col='wpm', lang='All')
-    print(plots.color_discrete_sequence)
+    print(lang_pie[1])
