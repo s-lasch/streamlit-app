@@ -60,12 +60,6 @@ boxplot = {
             "datasetIndex": 1
         },
         {
-            "color": plots.color_discrete_sequence[1],
-            "name": 'boxplot',
-            "type": 'boxplot',
-            "datasetIndex": 1
-        },
-        {
             "name": 'outlier',
             "type": 'scatter',
             "datasetIndex": 2
