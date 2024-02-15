@@ -48,7 +48,7 @@ st.sidebar.markdown('''
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
 ''')
 
-st.sidebar.badge(type='github', name='s-lasch/streamlit-app')
+badge(type='github', name='s-lasch/streamlit-app')
 
 # Row A
 with open("pages/about.md", "r") as f:
