@@ -55,7 +55,7 @@ col1.metric(label="**`wpm`**: *words per minute*", value=round(typing['wpm'].med
 col2.metric(label="**`rawWpm`**: *raw words per minute*", value=round(typing['rawWpm'].median(), 1), help='**Median** raw words per minute, without accounting for `acc`.')
 col3.metric(label="**`acc`**, **`consistency`**: *accuracy and consistency*", value=f"{round(typing['acc'].median(), 1)}%,  {round(typing['consistency'].median(),1)}%", help='**Median** `acc` (typing accuracy) and `consistency`, represented as percentages.')
 
-style_metric_cards(border_color="#FF4B4B")
+style_metric_cards(border_left_color="#FF4B4B")
 
 st.markdown("---")
 
