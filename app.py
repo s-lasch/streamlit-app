@@ -81,15 +81,11 @@ boxplot = (
     .add_yaxis(
         series_name="",
         y_axis=data,
-        # Set y-axis label based on column name
         yaxis_index=0,
-        # Set custom colors for each boxplot
-        itemstyle_opts=opts.ItemStyleOpts(color=plots.color_discrete_sequence),  # For column 'A'
     )
     .set_global_opts(
         xaxis_opts=opts.AxisOpts(type_="category"),
-        yaxis_opts=opts.AxisOpts(type_="value", name="wpm"),
-        title_opts=opts.TitleOpts(is_show=False, title="Shit")
+        yaxis_opts=opts.AxisOpts(type_="value", name="wpm")
     )
 )
 se.st_pyecharts(boxplot, renderer='svg', height=box_height)
