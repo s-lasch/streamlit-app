@@ -25,7 +25,7 @@ lang = st.sidebar.selectbox('Filter by langauge',
 
 st.sidebar.markdown('<br/>', unsafe_allow_html=True)
 st.sidebar.subheader('Column')
-choose_column = st.sidebar.selectbox('Choose column',
+choose_column = st.sidebar.selectbox('Choose metric',
                                      options=['wpm', 'acc', 'consistency', 'rawWpm'],
                                      format_func=lambda x: 'words per minute' if x == 'wpm'
                                      else 'accuracy' if x == 'acc'
@@ -44,6 +44,11 @@ st.sidebar.markdown('''
 ---
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
 ''')
+
+col1, col2, col3 = st.columns(3)
+col1.metric(label="`wpm`", value="words per minute")
+col2.metric(label="`rawWpm`", value="raw words per minute")
+col3.metric(label="`acc` & `consistency`", value="accuracy & consistency")
 
 # Row A
 with open("pages/about.md", "r") as f:
