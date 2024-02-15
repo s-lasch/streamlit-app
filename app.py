@@ -50,9 +50,9 @@ with open("pages/about.md", "r") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
-col1.metric(label="`wpm`", value="words per minute")
-col2.metric(label="`rawWpm`", value="raw words per minute")
-col3.metric(label="`acc` & `consistency`", value="accuracy & consistency")
+col1.metric(label="`wpm`: *words per minute*", value=max(typing[typing['mode'] == 'wpm']))
+col2.metric(label="`rawWpm`: *raw words per minute*", value=max(typing[typing['mode'] == 'rawWpm']))
+col3.metric(label="`acc` & `consistency`: *accuracy & consistency*", value=f"{max(typing[typing['mode'] == 'acc'])} & {max(typing[typing['mode'] == 'consistency'])}")
 
 # Row B
 c1, c2 = st.columns((5, 5))
