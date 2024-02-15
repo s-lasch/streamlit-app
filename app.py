@@ -1,7 +1,6 @@
 import streamlit as st
 import streamlit_echarts as se
 import pandas as pd
-import pyecharts as pe
 import pyecharts.options as opts
 from pyecharts.charts import Boxplot
 
@@ -93,4 +92,4 @@ boxplot = (
         title_opts=opts.TitleOpts(is_show=False, title="Shit")
     )
 )
-boxplot.render()
+se.st_pyecharts(boxplot, renderer='svg', height=box_height)
