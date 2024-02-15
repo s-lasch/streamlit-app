@@ -74,7 +74,7 @@ data = [typing[choose_column][typing['mode'] == 'time'].to_list(),
 x_axis = list(['time', 'words', 'quote', 'custom', 'zen'])
 
 # Create Boxplot instance
-boxplot = (
+(
     Boxplot()
     .set_series_opts(colors=plots.color_discrete_sequence)
     .add_xaxis(x_axis)
