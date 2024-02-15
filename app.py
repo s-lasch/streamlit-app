@@ -5,6 +5,7 @@ import pyecharts.options as opts
 import streamlit_extras.jupyterlite
 from pyecharts.charts import Boxplot
 from streamlit_extras.metric_cards import style_metric_cards
+from streamlit_extras.badges import badge
 
 import plots
 from data.data import get_lang_data, get_mode_data
@@ -42,9 +43,10 @@ st.sidebar.markdown('<br/>', unsafe_allow_html=True)
 st.sidebar.subheader('Box Plot Height')
 box_height = st.sidebar.slider(min_value=400, max_value=600, step=5, value=400, label="Height for the box plot")
 
-st.sidebar.markdown('''
+st.sidebar.markdown(f'''
 ---
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
+{badge(type='github', url='https://github.com/s-lasch/streamlit-app')}
 ''')
 
 # Row A
