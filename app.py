@@ -51,10 +51,11 @@ st.sidebar.markdown('''
 with open("pages/about.md", "r") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 col1.metric(label="**`wpm`**: *words per minute*", value=round(typing['wpm'].median(), 1), help='**Median** words typed per minute. Takes `acc` into account.')
 col2.metric(label="**`rawWpm`**: *raw words per minute*", value=round(typing['rawWpm'].median(), 1), help='**Median** raw words per minute, without accounting for `acc`.')
-col3.metric(label="**`acc`**, **`consistency`**: *accuracy and consistency*", value=f"{round(typing['acc'].median(), 1)}%,  {round(typing['consistency'].median(),1)}%", help='**Median** `acc` (typing accuracy) and `consistency`, represented as percentages.')
+col3.metric(label="**`acc`**: *typing accuracy*", value=f"{round(typing['acc'].median(), 1)}%", help='**Median** `acc` (typing accuracy), which is a percentage.')
+col4.metric(label="**`consistency`**: *typing speed consistency*", value=f"{round(typing['consistency'].median(),1)}%", help='**Median** `consistency`, which is a percentage.')
 
 style_metric_cards(border_left_color="#FF4B4B")
 
