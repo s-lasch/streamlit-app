@@ -77,7 +77,6 @@ boxplot = (
     Boxplot()
     .set_series_opts(colors=plots.color_discrete_sequence)
     .add_xaxis(x_axis)
-    # .add_yaxis(series_name="", y_axis=l)
     .add_yaxis(
         series_name="",
         y_axis=data,
@@ -85,7 +84,7 @@ boxplot = (
     )
     .set_global_opts(
         xaxis_opts=opts.AxisOpts(type_="category"),
-        yaxis_opts=opts.AxisOpts(type_="value", name="wpm")
+        yaxis_opts=opts.AxisOpts(type_="value", name=f"{choose_column}")
     )
 )
 se.st_pyecharts(boxplot, renderer='svg', height=box_height)
