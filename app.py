@@ -50,7 +50,7 @@ with open("pages/about.md", "r") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
 
 col1, col2, col3 = st.columns(3)
-col1.metric(label="**`wpm`**: *words per minute*", value=round(typing['wpm'].median(), 1), help='**Median** words per minute')
+col1.metric(label="**`wpm`**: *words per minute*", value=round(typing['wpm'].median(), 1), help='**Median** words per minute', label_visibility='collapsed')
 col2.metric(label="**`rawWpm`**: *raw words per minute*", value=round(typing['rawWpm'].median(), 1), help='**Median** raw words per minute, a metric of `wpm` and `acc`')
 col3.metric(label="**`acc`**, **`consistency`**: *accuracy and consistency*", value=f"{round(typing['acc'].median(), 1)}%,  {round(typing['consistency'].median(),1)}%", help='**Median** `acc` and `consistency`, represented as percentages.')
 
