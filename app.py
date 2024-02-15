@@ -7,7 +7,6 @@ from pyecharts.charts import Boxplot
 import plots
 from data.data import get_lang_data, get_mode_data
 
-
 typing = pd.read_csv('data/results.csv', delimiter="|")
 
 st.set_page_config(layout='wide', initial_sidebar_state='expanded', page_title='Typing Test Analysis')
@@ -20,7 +19,9 @@ st.sidebar.header('Dashboard `version 2`')
 st.sidebar.subheader('Language')
 lang = st.sidebar.selectbox('Filter by langauge',
                             options=['All'] + [lang for lang in typing['language'].unique()],
-                            format_func=lambda x: (x.replace('_', " ").capitalize() if not x.endswith('1k') else x.split("_")[0].capitalize()))
+                            format_func=lambda x: (
+                                x.replace('_', " ").capitalize() if not x.endswith('1k') else x.split("_")[
+                                    0].capitalize()))
 
 st.sidebar.markdown('<br/>', unsafe_allow_html=True)
 st.sidebar.subheader('Column')
@@ -48,7 +49,6 @@ st.sidebar.markdown('''
 with open("pages/about.md", "r") as f:
     st.markdown(f.read(), unsafe_allow_html=True)
 
-
 # Row B
 c1, c2 = st.columns((5, 5))
 with c1:
@@ -65,10 +65,10 @@ st.markdown('<br/>', unsafe_allow_html=True)
 st.markdown('### <center>Box Plot</center>', unsafe_allow_html=True)
 # se.st_echarts(get_mode_data(typing, choose_column, lang)[1], renderer='svg', height=box_height)
 data = [typing[choose_column][typing['mode'] == 'time'].to_list(),
-                              typing[choose_column][typing['mode'] == 'words'].to_list(),
-                              typing[choose_column][typing['mode'] == 'quote'].to_list(),
-                              typing[choose_column][typing['mode'] == 'custom'].to_list(),
-                              typing[choose_column][typing['mode'] == 'zen'].to_list()]
+        typing[choose_column][typing['mode'] == 'words'].to_list(),
+        typing[choose_column][typing['mode'] == 'quote'].to_list(),
+        typing[choose_column][typing['mode'] == 'custom'].to_list(),
+        typing[choose_column][typing['mode'] == 'zen'].to_list()]
 
 x_axis = list(['time', 'words', 'quote', 'custom', 'zen'])
 
@@ -84,7 +84,7 @@ boxplot = (
     )
     .set_global_opts(
         xaxis_opts=opts.AxisOpts(type_="category"),
-        yaxis_opts=opts.AxisOpts(type_="value", name=f"{choose_column}")
+        yaxis_opts=opts.AxisOpts(type_="value", name=f'{"accuracy" if choose_column == "acc" else "raw wpm" if choose_column == "rawWpm" else choose_column}')
     )
 )
 se.st_pyecharts(boxplot, renderer='svg', height=box_height)
