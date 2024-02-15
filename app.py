@@ -46,7 +46,7 @@ box_height = st.sidebar.slider(min_value=400, max_value=600, step=5, value=400, 
 st.sidebar.markdown(f'''
 ---
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
-{badge(type='github', url='https://github.com/s-lasch/streamlit-app')}
+{badge(type='github', name='https://github.com/s-lasch/streamlit-app')}
 ''')
 
 # Row A
