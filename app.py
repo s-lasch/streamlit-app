@@ -93,4 +93,4 @@ boxplot = (
         title_opts=opts.TitleOpts(is_show=False, title="Shit")
     )
 )
-boxplot.render_options()
+boxplot.render()
