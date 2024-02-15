@@ -45,14 +45,14 @@ st.sidebar.markdown('''
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
 ''')
 
+# Row A
+with open("pages/about.md", "r") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
+
 col1, col2, col3 = st.columns(3)
 col1.metric(label="`wpm`", value="words per minute")
 col2.metric(label="`rawWpm`", value="raw words per minute")
 col3.metric(label="`acc` & `consistency`", value="accuracy & consistency")
-
-# Row A
-with open("pages/about.md", "r") as f:
-    st.markdown(f.read(), unsafe_allow_html=True)
 
 # Row B
 c1, c2 = st.columns((5, 5))
