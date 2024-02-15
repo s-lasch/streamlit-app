@@ -1,7 +1,11 @@
 import streamlit as st
 import streamlit_echarts as se
 import pandas as pd
+import pyecharts as pe
+import pyecharts.options as opts
+from pyecharts.charts import Boxplot
 
+import plots
 from data.data import get_lang_data, get_mode_data
 
 
@@ -61,3 +65,31 @@ st.markdown('<br/>', unsafe_allow_html=True)
 # Row C
 st.markdown('### <center>Box Plot</center>', unsafe_allow_html=True)
 se.st_echarts(get_mode_data(typing, choose_column, lang)[1], renderer='svg', height=box_height)
+data = [typing[choose_column][typing['mode'] == 'time'].to_list(),
+                              typing[choose_column][typing['mode'] == 'words'].to_list(),
+                              typing[choose_column][typing['mode'] == 'quote'].to_list(),
+                              typing[choose_column][typing['mode'] == 'custom'].to_list(),
+                              typing[choose_column][typing['mode'] == 'zen'].to_list()]
+
+x_axis = list(['time', 'words', 'quote', 'custom', 'zen'])
+
+# Create Boxplot instance
+boxplot = (
+    Boxplot()
+    .set_series_opts(colors=plots.color_discrete_sequence)
+    .add_xaxis(x_axis)
+    # .add_yaxis(series_name="", y_axis=l)
+    .add_yaxis(
+        series_name="",
+        y_axis=data,
+        # Set y-axis label based on column name
+        yaxis_index=0,
+        # Set custom colors for each boxplot
+        itemstyle_opts=opts.ItemStyleOpts(color=plots.color_discrete_sequence),  # For column 'A'
+    )
+    .set_global_opts(
+        xaxis_opts=opts.AxisOpts(type_="category"),
+        yaxis_opts=opts.AxisOpts(type_="value", name="wpm"),
+        title_opts=opts.TitleOpts(is_show=False, title="Shit")
+    )
+)

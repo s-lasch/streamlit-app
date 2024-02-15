@@ -1,4 +1,5 @@
 import pandas as pd
+
 import plots
 
 boxplot = {
@@ -127,17 +128,34 @@ def get_mode_data(df, col=None, lang='All'):
     pie['series'][0]['color'] = plots.color_discrete_sequence
 
     if col:
-        # get boxplot data
-        df_box = plots.filter_language(df, lang)
+        data = [df[col][df['mode'] == 'time'].to_list(),
+                df[col][df['mode'] == 'words'].to_list(),
+                df[col][df['mode'] == 'quote'].to_list(),
+                df[col][df['mode'] == 'custom'].to_list(),
+                df[col][df['mode'] == 'zen'].to_list()]
 
-        data = {j: i for i, j in zip([df_box[col][df_box['mode'] == 'time'].to_list(),
-                                      df_box[col][df_box['mode'] == 'words'].to_list(),
-                                      df_box[col][df_box['mode'] == 'quote'].to_list(),
-                                      df_box[col][df_box['mode'] == 'custom'].to_list(),
-                                      df_box[col][df_box['mode'] == 'zen'].to_list()],
-                                     ['time', 'words', 'quote', 'custom', 'zen'])}
+        x_axis = list(['time', 'words', 'quote', 'custom', 'zen'])
 
-        boxplot['dataset'][0]['source'] = data
+        # Create Boxplot instance
+        boxplot = (
+            Boxplot()
+            .set_series_opts(colors=px.colors.sequential.RdBu[0])
+            .add_xaxis(x_axis)
+            # .add_yaxis(series_name="", y_axis=l)
+            .add_yaxis(
+                series_name="",
+                y_axis=data,
+                # Set y-axis label based on column name
+                yaxis_index=0,
+                # Set custom colors for each boxplot
+                itemstyle_opts=opts.ItemStyleOpts(color=px.colors.sequential.RdBu[0]),  # For column 'A'
+            )
+            .set_global_opts(
+                xaxis_opts=opts.AxisOpts(type_="category"),
+                yaxis_opts=opts.AxisOpts(type_="value", name="wpm"),
+                title_opts=opts.TitleOpts(is_show=False, title="Shit")
+            )
+        )
 
     return pie, boxplot
 
@@ -145,4 +163,4 @@ def get_mode_data(df, col=None, lang='All'):
 if __name__ == "__main__":
     dff = pd.read_csv('results.csv', delimiter='|')
     lang_pie = get_mode_data(dff, col='wpm', lang='All')
-    print(plots.color_discrete_sequence)
+    print(lang_pie[1])
