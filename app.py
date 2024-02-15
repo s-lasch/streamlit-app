@@ -76,11 +76,14 @@ st.markdown('<br/>', unsafe_allow_html=True)
 # Row C
 st.markdown('### <center>Box Plot</center>', unsafe_allow_html=True)
 # se.st_echarts(get_mode_data(typing, choose_column, lang)[1], renderer='svg', height=box_height)
-data = [typing[choose_column][typing['mode'] == 'time'].to_list(),
-        typing[choose_column][typing['mode'] == 'words'].to_list(),
-        typing[choose_column][typing['mode'] == 'quote'].to_list(),
-        typing[choose_column][typing['mode'] == 'custom'].to_list(),
-        typing[choose_column][typing['mode'] == 'zen'].to_list()]
+
+box_typing = plots.filter_language(typing, lang)
+
+data = [box_typing[choose_column][box_typing['mode'] == 'time'].to_list(),
+        box_typing[choose_column][box_typing['mode'] == 'words'].to_list(),
+        box_typing[choose_column][box_typing['mode'] == 'quote'].to_list(),
+        box_typing[choose_column][box_typing['mode'] == 'custom'].to_list(),
+        box_typing[choose_column][box_typing['mode'] == 'zen'].to_list()]
 
 x_axis = list(['time', 'words', 'quote', 'custom', 'zen'])
 
