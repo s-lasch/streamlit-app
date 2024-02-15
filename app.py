@@ -99,5 +99,3 @@ boxplot = (
     )
 )
 se.st_pyecharts(boxplot, renderer='svg', height=box_height)
-
-streamlit_extras.jupyterlite.jupyterlite(500,500)
