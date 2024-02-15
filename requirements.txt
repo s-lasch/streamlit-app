@@ -1,5 +1,6 @@
 streamlit
 streamlit_echarts
+streamlit_extras
 pyecharts
 pandas
 plotly

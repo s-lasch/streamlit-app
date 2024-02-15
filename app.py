@@ -3,6 +3,7 @@ import streamlit_echarts as se
 import pandas as pd
 import pyecharts.options as opts
 from pyecharts.charts import Boxplot
+from streamlit_extras.metric_cards import style_metric_cards
 
 import plots
 from data.data import get_lang_data, get_mode_data
@@ -53,6 +54,8 @@ col1, col2, col3 = st.columns(3)
 col1.metric(label="**`wpm`**: *words per minute*", value=round(typing['wpm'].median(), 1), help='**Median** words per minute')
 col2.metric(label="**`rawWpm`**: *raw words per minute*", value=round(typing['rawWpm'].median(), 1), help='**Median** raw words per minute, a metric of `wpm` and `acc`')
 col3.metric(label="**`acc`**, **`consistency`**: *accuracy and consistency*", value=f"{round(typing['acc'].median(), 1)}%,  {round(typing['consistency'].median(),1)}%", help='**Median** `acc` and `consistency`, represented as percentages.')
+
+style_metric_cards()
 
 st.markdown("---")
 
