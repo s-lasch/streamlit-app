@@ -64,7 +64,7 @@ st.markdown('<br/>', unsafe_allow_html=True)
 
 # Row C
 st.markdown('### <center>Box Plot</center>', unsafe_allow_html=True)
-se.st_echarts(get_mode_data(typing, choose_column, lang)[1], renderer='svg', height=box_height)
+# se.st_echarts(get_mode_data(typing, choose_column, lang)[1], renderer='svg', height=box_height)
 data = [typing[choose_column][typing['mode'] == 'time'].to_list(),
                               typing[choose_column][typing['mode'] == 'words'].to_list(),
                               typing[choose_column][typing['mode'] == 'quote'].to_list(),

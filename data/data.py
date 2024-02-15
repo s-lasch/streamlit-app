@@ -128,36 +128,9 @@ def get_mode_data(df, col=None, lang='All'):
     pie['series'][0]['color'] = plots.color_discrete_sequence
 
     if col:
-        data = [df[col][df['mode'] == 'time'].to_list(),
-                df[col][df['mode'] == 'words'].to_list(),
-                df[col][df['mode'] == 'quote'].to_list(),
-                df[col][df['mode'] == 'custom'].to_list(),
-                df[col][df['mode'] == 'zen'].to_list()]
+        pass
 
-        x_axis = list(['time', 'words', 'quote', 'custom', 'zen'])
-
-        # Create Boxplot instance
-        boxplot = (
-            Boxplot()
-            .set_series_opts(colors=px.colors.sequential.RdBu[0])
-            .add_xaxis(x_axis)
-            # .add_yaxis(series_name="", y_axis=l)
-            .add_yaxis(
-                series_name="",
-                y_axis=data,
-                # Set y-axis label based on column name
-                yaxis_index=0,
-                # Set custom colors for each boxplot
-                itemstyle_opts=opts.ItemStyleOpts(color=px.colors.sequential.RdBu[0]),  # For column 'A'
-            )
-            .set_global_opts(
-                xaxis_opts=opts.AxisOpts(type_="category"),
-                yaxis_opts=opts.AxisOpts(type_="value", name="wpm"),
-                title_opts=opts.TitleOpts(is_show=False, title="Shit")
-            )
-        )
-
-    return pie, boxplot
+    return pie
 
 
 if __name__ == "__main__":
