@@ -43,11 +43,12 @@ st.sidebar.markdown('<br/>', unsafe_allow_html=True)
 st.sidebar.subheader('Box Plot Height')
 box_height = st.sidebar.slider(min_value=400, max_value=600, step=5, value=400, label="Height for the box plot")
 
-st.sidebar.markdown(f'''
+st.sidebar.markdown('''
 ---
 *Created with [streamlit](https://streamlit.io/) by [Steven Lasch](https://steven-lasch.com)*
-{badge(type='github', name='s-lasch/streamlit-app')}
 ''')
+
+st.sidebar.badge(type='github', name='s-lasch/streamlit-app')
 
 # Row A
 with open("pages/about.md", "r") as f:
