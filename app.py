@@ -2,6 +2,7 @@ import streamlit as st
 import streamlit_echarts as se
 import pandas as pd
 import pyecharts.options as opts
+import streamlit_extras.jupyterlite
 from pyecharts.charts import Boxplot
 from streamlit_extras.metric_cards import style_metric_cards
 
@@ -98,3 +99,5 @@ boxplot = (
     )
 )
 se.st_pyecharts(boxplot, renderer='svg', height=box_height)
+
+streamlit_extras.jupyterlite.jupyterlite(500,500)
