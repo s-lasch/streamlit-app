@@ -138,4 +138,4 @@ if __name__ == "__main__":
     import plotly.express as px
 
     lang_pie(pd.read_csv("https://raw.githubusercontent.com/s-lasch/typing-tests/main/results.csv",
-                         delimiter="|")).show()
+                         delimiter=",")).show()
