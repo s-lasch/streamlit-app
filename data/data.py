@@ -134,6 +134,6 @@ def get_mode_data(df, col=None, lang='All'):
 
 
 if __name__ == "__main__":
-    dff = pd.read_csv('results.csv', delimiter='|')
+    dff = pd.read_csv('results.csv', delimiter=',')
     lang_pie = get_mode_data(dff, col='wpm', lang='All')
     print(lang_pie[1])
