@@ -10,7 +10,7 @@ from streamlit_extras.badges import badge
 import plots
 from data.data import get_lang_data, get_mode_data
 
-typing = pd.read_csv('data/results.csv', delimiter="|")
+typing = pd.read_csv('data/results.csv', delimiter=",")
 
 st.set_page_config(layout='wide', initial_sidebar_state='expanded', page_title='Typing Test Analysis')
 
